@@ -1,4 +1,6 @@
 import { Play } from 'phosphor-react'
+import minus from '../../assets/Minus.svg'
+import plus from '../../assets/Plus.svg'
 import {
   CountDownContainer,
   FormContainer,
@@ -12,12 +14,30 @@ export const Home = () => {
       <FormContainer>
         <label htmlFor="task">Vou trabalhar em</label>
         <input
+          list="suggestion"
           type="text"
           id="task"
           placeholder="Dê um nome para o seu projeto"
         />
+        <datalist id="suggestion">
+          <option>Projeto 1</option>
+          <option>Projeto 2</option>
+        </datalist>
         <label htmlFor="minutesAmount">durante</label>
-        <input type="text" id="minutesAmount" />
+        <div className="wrapperMinutes">
+          <img className="minus" src={minus} alt="" />
+          <input
+            type="number"
+            id="minutesAmount"
+            min={5}
+            max={60}
+            maxLength={2}
+            step={5}
+            placeholder="00"
+          />
+          <img className="plus" src={plus} alt="" />
+        </div>
+
         <span>minutos.</span>
       </FormContainer>
 
