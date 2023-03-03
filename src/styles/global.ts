@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   color: inherit;
   text-decoration: none;
   list-style: none;
+  -webkit-font-smoothing: antialiased;
 }
 :root{
   font-size: 62.5%

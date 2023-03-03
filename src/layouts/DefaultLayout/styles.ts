@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const LayoutContainer = styled.div`
   max-width: 108rem;
   width: 100%;
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   /* align-items: center; */
