@@ -49,3 +49,27 @@ export const TableContainer = styled.div`
     }
   }
 `
+const StatusColor = {
+  yellow: 'yellow-500',
+  red: 'red-500',
+  green: 'green-500',
+} as const
+
+interface StatusColorProps {
+  statusColor: keyof typeof StatusColor
+}
+
+export const StatusTask = styled.span<StatusColorProps>`
+  display: inline-flex;
+  align-items: center;
+  ::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    margin-right: 8px;
+    border-radius: 50%;
+    background-color: ${({ theme, statusColor }) =>
+      theme[StatusColor[statusColor]]};
+  }
+`

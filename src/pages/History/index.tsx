@@ -1,3 +1,4 @@
+import { StatusTask } from '../History/styles'
 import { HistoryContainer, TableContainer } from './styles'
 
 export const History = () => {
@@ -19,37 +20,55 @@ export const History = () => {
               <td>Conserto de débitos técnicos </td>
               <td>25 minutos</td>
               <td>Há cerca de 2 meses</td>
-              <td>Em andamento</td>
+              <td>
+                <StatusTask statusColor="yellow" />
+                Em andamento
+              </td>
             </tr>
             <tr>
               <td>Conserto de débitos técnicos </td>
               <td>25 minutos</td>
               <td>Há cerca de 2 meses</td>
-              <td>Em andamento</td>
+              <td>
+                <StatusTask statusColor="green" />
+                Em andamento
+              </td>
             </tr>
             <tr>
               <td>Conserto de débitos técnicos </td>
               <td>25 minutos</td>
               <td>Há cerca de 2 meses</td>
-              <td>Em andamento</td>
+              <td>
+                <StatusTask statusColor="red" />
+                Em andamento
+              </td>
             </tr>
             <tr>
               <td>Conserto de débitos técnicos </td>
               <td>25 minutos</td>
               <td>Há cerca de 2 meses</td>
-              <td>Em andamento</td>
+              <td>
+                <StatusTask statusColor="yellow" />
+                Em andamento
+              </td>
             </tr>
             <tr>
               <td>Conserto de débitos técnicos </td>
               <td>25 minutos</td>
               <td>Há cerca de 2 meses</td>
-              <td>Em andamento</td>
+              <td>
+                <StatusTask statusColor="yellow" />
+                Em andamento
+              </td>
             </tr>
             <tr>
               <td>Conserto de débitos técnicos </td>
               <td>25 minutos</td>
               <td>Há cerca de 2 meses</td>
-              <td>Em andamento</td>
+              <td>
+                <StatusTask statusColor="yellow" />
+                Em andamento
+              </td>
             </tr>
           </tbody>
         </table>

@@ -4,10 +4,13 @@ export const HomeContainer = styled.main`
   /* width: 656px; */
   width: 656px;
   height: 424px;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  align-self: center;
+  margin: 0 auto;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-self: center;
+  }
   button {
     display: flex;
     flex-direction: row;
@@ -22,7 +25,7 @@ export const HomeContainer = styled.main`
     cursor: pointer;
   }
 `
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
   display: flex;
   height: 40px;
   align-items: center;
