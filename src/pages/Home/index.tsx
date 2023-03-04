@@ -2,6 +2,8 @@ import { Play } from 'phosphor-react'
 import minus from '../../assets/Minus.svg'
 import plus from '../../assets/Plus.svg'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
 import {
   CountDownContainer,
   FormContainer,
@@ -9,8 +11,12 @@ import {
   Separator,
 } from './styles'
 
+const newCicleFormValidationSchema = zod.object({})
+
 export const Home = () => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit } = useForm({
+    resolver: zodResolver(),
+  })
   const handleFormSubmit = (data: any) => {
     console.log(data)
   }
