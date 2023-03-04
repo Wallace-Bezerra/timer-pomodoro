@@ -23,6 +23,14 @@ export const HomeContainer = styled.main`
     border-radius: 8px;
     border: none;
     cursor: pointer;
+    transition: all 0.4s;
+    :hover:not(:disabled) {
+      background-color: ${({ theme }) => theme['green-700']};
+    }
+    :disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
   }
 `
 export const FormContainer = styled.div`
@@ -51,7 +59,7 @@ export const FormContainer = styled.div`
     }
     &#minutesAmount {
       width: 72px;
-      padding-left: 23px;
+      text-align: center;
       height: 100%;
     }
     ::placeholder {
