@@ -1,4 +1,10 @@
-import { createContext, SetStateAction, Dispatch, useState } from 'react'
+import {
+  createContext,
+  SetStateAction,
+  Dispatch,
+  useState,
+  ReactNode,
+} from 'react'
 
 export interface Cycle {
   id: string
@@ -9,19 +15,26 @@ export interface Cycle {
   completedDate?: Date
 }
 interface CycleContextType {
+  cycles: Cycle[]
   activeCycle: Cycle | undefined
   activeCycleId: string | null
   setActiveCycleId: Dispatch<SetStateAction<string | null>>
   setCycles: Dispatch<SetStateAction<Cycle[]>>
 }
+interface CycleContextProviderProps {
+  children: ReactNode
+}
 export const CycleContext = createContext<CycleContextType>({
+  cycles: [],
   activeCycle: undefined,
   activeCycleId: null,
   setActiveCycleId: () => {},
   setCycles: () => {},
 })
 
-export const CycleContextProvider = ({ children }: any) => {
+export const CycleContextProvider = ({
+  children,
+}: CycleContextProviderProps) => {
   const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
 
@@ -32,6 +45,7 @@ export const CycleContextProvider = ({ children }: any) => {
   return (
     <CycleContext.Provider
       value={{
+        cycles,
         activeCycle,
         activeCycleId,
         setActiveCycleId,
