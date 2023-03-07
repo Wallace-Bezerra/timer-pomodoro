@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import { CycleContext } from '../../context/CycleContext'
 import { StatusTask } from '../History/styles'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import { HistoryContainer, TableContainer } from './styles'
 
 export const History = () => {
@@ -8,7 +10,6 @@ export const History = () => {
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
-      {JSON.stringify(cycles, null, 2)}
       <TableContainer>
         <table>
           <thead>
@@ -20,60 +21,33 @@ export const History = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <StatusTask statusColor="yellow" />
-                Em andamento
-              </td>
-            </tr>
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <StatusTask statusColor="green" />
-                Em andamento
-              </td>
-            </tr>
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <StatusTask statusColor="red" />
-                Em andamento
-              </td>
-            </tr>
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <StatusTask statusColor="yellow" />
-                Em andamento
-              </td>
-            </tr>
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <StatusTask statusColor="yellow" />
-                Em andamento
-              </td>
-            </tr>
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <StatusTask statusColor="yellow" />
-                Em andamento
-              </td>
-            </tr>
+            {cycles.map((cycle) => {
+              return (
+                <tr key={cycle.id}>
+                  <td>{cycle.task} </td>
+                  <td>{cycle.minutesAmount} minutos</td>
+                  <td>
+                    {formatDistanceToNow(cycle.startDate, {
+                      addSuffix: true,
+                      locale: ptBR,
+                    })}
+                  </td>
+                  <td>
+                    {cycle.completedDate && (
+                      <StatusTask statusColor={'green'}>Completo</StatusTask>
+                    )}
+                    {!cycle.interruptedDate && !cycle.completedDate && (
+                      <StatusTask statusColor={'yellow'}>
+                        Em andamento
+                      </StatusTask>
+                    )}
+                    {cycle.interruptedDate && (
+                      <StatusTask statusColor={'red'}>Interrompido</StatusTask>
+                    )}
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </TableContainer>

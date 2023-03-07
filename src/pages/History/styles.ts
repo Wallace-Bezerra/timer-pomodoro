@@ -44,7 +44,7 @@ export const TableContainer = styled.div`
       background-color: ${({ theme }) => theme['gray-700']};
       border-top: solid 3px ${({ theme }) => theme['gray-800']};
       :first-child {
-        width: 50%;
+        width: 45%;
       }
     }
   }
@@ -55,13 +55,13 @@ const StatusColor = {
   green: 'green-500',
 } as const
 
-interface StatusColorProps {
+export interface StatusColorProps {
   statusColor: keyof typeof StatusColor
 }
 
 export const StatusTask = styled.span<StatusColorProps>`
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   ::before {
     content: '';
     width: 8px;
