@@ -25,20 +25,23 @@ export const NewCycleForm = () => {
         minutesAmount: 0,
       },
     })
-  const { setActiveCycleId, setCycles, activeCycle, activeCycleId } =
-    useContext(CycleContext)
+  const { dispatch, activeCycle } = useContext(CycleContext)
 
   const handleInterrupt = () => {
-    setCycles((state) =>
-      state.map((cycle) => {
-        if (cycle.id === activeCycleId) {
-          return { ...cycle, interruptedDate: new Date() }
-        } else {
-          return cycle
-        }
-      }),
-    )
-    setActiveCycleId(null)
+    dispatch({
+      type: 'INTERRUPTED_CYCLE',
+    })
+    // setActiveCycleId(null)
+    // setCycles((state) =>
+    //   state.map((cycle) => {
+    //     if (cycle.id === activeCycleId) {
+    //       return { ...cycle, interruptedDate: new Date() }
+    //     } else {
+    //       return cycle
+    //     }
+    //   }),
+    // )
+    // setActiveCycleId(null)
   }
 
   const handleFormSubmit = (data: newCicleFormData) => {
@@ -47,10 +50,11 @@ export const NewCycleForm = () => {
       id,
       task: data.task,
       minutesAmount: data.minutesAmount,
-      startDate: new Date(),
+      startDate: new Date().toISOString(),
     }
-    setCycles((state) => [...state, newCycle])
-    setActiveCycleId(id)
+    // setCycles((state) => [...state, newCycle])
+    dispatch({ type: 'ADD_NEW_CYCLE', payload: newCycle })
+    // setActiveCycleId(id)
     reset()
   }
 
