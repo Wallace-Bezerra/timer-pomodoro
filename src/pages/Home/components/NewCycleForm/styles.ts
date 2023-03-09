@@ -105,7 +105,4 @@ export const ButtonCycle = styled.button<ButtonCycleProps>`
     opacity: 0.7;
     cursor: not-allowed;
   }
-  :focus {
-    box-shadow: none;
-  }
 `

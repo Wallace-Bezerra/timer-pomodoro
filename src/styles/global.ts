@@ -15,7 +15,6 @@ export const GlobalStyle = createGlobalStyle`
 }
 :focus{
   outline: 0;
-  box-shadow: 0 0 0 0.2rem ${({ theme }) => theme['green-500']}
 }
 body,textarea,button,input{
   font-family: "Roboto", sans-serif;
@@ -26,5 +25,12 @@ body,textarea,button,input{
 body{
   background-color:${({ theme }) => theme['gray-900']};
   color: ${({ theme }) => theme['gray-300']};
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  min-height: 100vh;
+  #root{
+    width: 1120px;
+  }
 }
 `

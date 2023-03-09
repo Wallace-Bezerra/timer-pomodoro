@@ -76,6 +76,8 @@ export const CycleContextProvider = ({
           }),
           activeCycleId: null,
         }
+      case 'CLEAR_HISTORY':
+        return { ...state, cycles: [] }
       default:
         return state
     }

@@ -6,11 +6,22 @@ import { ptBR } from 'date-fns/locale'
 import { HistoryContainer, TableContainer } from './styles'
 
 export const History = () => {
-  const { cycles } = useContext(CycleContext)
+  const { cycles, dispatch } = useContext(CycleContext)
   console.log(cycles, 'history')
   return (
     <HistoryContainer>
-      <h1>Meu histórico</h1>
+      <div className="title">
+        <h1>Meu histórico</h1>
+        <button
+          onClick={() => {
+            dispatch({ type: 'CLEAR_HISTORY' })
+          }}
+          type="button"
+        >
+          Limpar histórico
+        </button>
+      </div>
+
       <TableContainer>
         <table>
           <thead>

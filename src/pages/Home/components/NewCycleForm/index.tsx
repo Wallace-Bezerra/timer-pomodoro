@@ -11,8 +11,8 @@ import plus from '../../../../assets/Plus.svg'
 
 const newCicleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe uma tarefa.'),
-  // minutesAmount: zod.number().min(1).max(60).step(5, 'Erro step'),
-  minutesAmount: zod.number().min(1).max(60),
+  minutesAmount: zod.number().min(5).max(60).step(5, 'Erro step'),
+  // minutesAmount: zod.number().min(1).max(60),
 })
 export type newCicleFormData = zod.infer<typeof newCicleFormValidationSchema>
 
@@ -71,6 +71,7 @@ export const NewCycleForm = () => {
           id="task"
           placeholder="Dê um nome para o seu projeto"
           disabled={!!activeCycle}
+          required
           {...register('task')}
         />
         <datalist id="suggestion">
@@ -96,9 +97,10 @@ export const NewCycleForm = () => {
           <input
             type="number"
             id="minutesAmount"
-            min={1}
+            min={5}
             max={60}
             maxLength={2}
+            required
             // step={5}
             disabled={!!activeCycle}
             placeholder="00"
